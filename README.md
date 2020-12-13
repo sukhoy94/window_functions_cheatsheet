@@ -1,1 +1,1 @@
-# window_functions_cheatsheet
+# Window Functions Cheatsheet
