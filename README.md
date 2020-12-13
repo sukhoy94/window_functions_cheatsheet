@@ -157,3 +157,21 @@ ORDER BY category, id;
 
 ```
 
+- lead()
+
+```
+SELECT
+   id,
+   author,
+   title,
+   body,
+   category,
+   views,
+   LEAD(views) OVER (
+       PARTITION BY category ORDER BY id
+   ) as views_lag
+FROM
+   posts
+ORDER BY category, id
+```
+
