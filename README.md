@@ -10,3 +10,13 @@ A window function performs an aggregate-like operation on a set of query rows. H
 - The row for which function evaluation occurs is called the current row.
 
 - The query rows related to the current row over which function evaluation occurs comprise the window for the current row.
+
+
+
+
+aggregate example: 
+
+```
+SELECT SUM(views) FROM posts
+SELECT SUM(views), author FROM posts GROUP BY author
+```
