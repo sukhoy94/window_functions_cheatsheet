@@ -169,7 +169,7 @@ SELECT
    views,
    LEAD(views) OVER (
        PARTITION BY category ORDER BY id
-   ) as views_lag
+   ) as views_lead
 FROM
    posts
 ORDER BY category, id
