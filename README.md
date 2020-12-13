@@ -38,3 +38,89 @@ Each window operation in the query is signified by inclusion of an OVER clause t
 - The second OVER clause partitions rows by country, producing a sum per partition (per author). The function produces this sum for each partition row.
 
 Window functions are permitted only in the select list and ORDER BY clause. Query result rows are determined from the FROM clause, after WHERE, GROUP BY, and HAVING processing, and windowing execution occurs before ORDER BY, LIMIT, and SELECT DISTINCT.
+
+
+# SQL's
+
+- cume_dist()
+
+```
+SELECT
+   id,
+   author,
+   title,
+   body,
+   category,
+   views,
+   CUME_DIST()  OVER (ORDER BY views) AS views_distribution
+FROM
+   posts
+```
+
+- dense_rank()
+
+```
+SELECT
+   id,
+   author,
+   title,
+   body,
+   category,
+   views,
+   DENSE_RANK() over (ORDER BY views DESC) as views_rank
+FROM
+   posts
+ORDER BY views_rank
+```
+
+- rank()
+
+```
+SELECT
+   id,
+   author,
+   title,
+   body,
+   category,
+   views,
+   RANK() over (ORDER BY views DESC) as views_rank
+FROM
+   posts
+ORDER BY views_rank
+```
+
+- first_value()
+
+```
+SELECT
+   id,
+   author,
+   title,
+   body,
+   category,
+   views,
+   FIRST_VALUE(views) OVER (PARTITION BY category) as first_views
+FROM
+   posts
+```
+
+- last_value()
+
+```
+SELECT
+   id,
+   author,
+   title,
+   body,
+   category,
+   views,
+   LAST_VALUE(views) OVER (
+       PARTITION BY category
+       ORDER BY id 
+       RANGE BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING
+   ) as last_views
+FROM
+   posts
+ORDER BY category, id
+```
+
