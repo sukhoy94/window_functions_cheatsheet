@@ -1,3 +1,5 @@
+https://dev.mysql.com/doc/refman/8.0/en/window-functions-usage.html
+
 # Window Functions Cheatsheet
 
 A window function is an SQL function where the input values are taken from a "window" of one or more rows in the results set of a SELECT statement.
