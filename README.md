@@ -124,3 +124,36 @@ FROM
 ORDER BY category, id
 ```
 
+- lag()
+
+```
+SELECT 
+    id, 
+    author, 
+    title, 
+    body, 
+    category, 
+    views,
+    row_number() OVER w AS rating,
+    lag(views) OVER w - views  AS views_lag
+FROM 
+    posts
+WINDOW w AS (ORDER BY views DESC)
+ORDER BY rating;
+
+SELECT 
+    id, 
+    author, 
+    title, 
+    body, 
+    category, 
+    views,
+    LAG(views) OVER (
+        PARTITION BY category ORDER BY id
+    ) as views_lag
+FROM 
+    posts
+ORDER BY category, id;
+
+```
+
