@@ -225,3 +225,18 @@ SELECT
 FROM
     posts
 ```
+
+- row_number()
+
+```
+SELECT
+    id,
+    author,
+    title,
+    body,
+    category,
+    views,
+    ROW_NUMBER() OVER (PARTITION BY category ORDER BY id DESC) AS 'row_number'
+FROM
+    posts
+```
