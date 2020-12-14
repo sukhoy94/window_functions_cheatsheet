@@ -210,3 +210,18 @@ FROM
    posts
 ORDER BY category, id
 ```
+
+- percent_rank()
+
+```
+SELECT
+    id,
+    author,
+    title,
+    body,
+    category,
+    views,
+    PERCENT_RANK() OVER (ORDER BY views) AS 'percent_rank'
+FROM
+    posts
+```
