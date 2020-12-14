@@ -192,3 +192,21 @@ FROM
     posts
 ORDER BY category, id
 ```
+
+- ntile()
+
+```
+SELECT
+   id,
+   author,
+   title,
+   body,
+   category,
+   views,
+   NTILE(2) OVER (
+       ORDER BY id
+       ) as ntile_views
+FROM
+   posts
+ORDER BY category, id
+```
