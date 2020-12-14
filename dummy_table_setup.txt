@@ -1,27 +1,26 @@
 DROP DATABASE IF EXISTS wfunctions;
-
 CREATE DATABASE wfunctions;
 
-create or replace table wfunctions.posts
+CREATE OR REPLACE TABLE wfunctions.posts
 (
-	id bigint unsigned auto_increment primary key,
-	title varchar(200) not null,
-	body text not null,
-	author varchar(50) not null,
-	category varchar(50) not null,
-	views int not null,
-	created_at timestamp default current_timestamp() not null
+    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(200) NOT NULL,
+    body TEXT NOT NULL,
+    author VARCHAR(50) NOT NULL,
+    category VARCHAR(50) NOT NULL,
+    views INT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP() NOT NULL
 );
 
 INSERT INTO wfunctions.posts
 (
-    title, 
-    body, 
-    author, 
-    category, 
+    title,
+    body,
+    author,
+    category,
     views
 )
-VALUES 
+VALUES
 ('The Wall', 'Awesome ablum', 'Andrii', 'Rock', 40),
 ('Wish you were here', 'Wish you were here song', 'Jane', 'Rock', 50),
 ('Loosing my religion', 'R.E.M song', 'Andrii', 'Rock', 25),
