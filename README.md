@@ -175,3 +175,20 @@ FROM
 ORDER BY category, id
 ```
 
+- nth_value()
+
+```
+SELECT
+    id,
+    author,
+    title,
+    body,
+    category,
+    views,
+    NTH_VALUE(views, 1) OVER (
+        PARTITION BY category ORDER BY id
+        ) as views_second_in_frame
+FROM
+    posts
+ORDER BY category, id
+```
