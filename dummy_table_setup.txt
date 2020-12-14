@@ -1,0 +1,34 @@
+DROP DATABASE IF EXISTS wfunctions;
+
+CREATE DATABASE wfunctions;
+
+create or replace table wfunctions.posts
+(
+	id bigint unsigned auto_increment primary key,
+	title varchar(200) not null,
+	body text not null,
+	author varchar(50) not null,
+	category varchar(50) not null,
+	views int not null,
+	created_at timestamp default current_timestamp() not null
+);
+
+INSERT INTO wfunctions.posts
+(
+    title, 
+    body, 
+    author, 
+    category, 
+    views
+)
+VALUES 
+('The Wall', 'Awesome ablum', 'Andrii', 'Rock', 40),
+('Wish you were here', 'Wish you were here song', 'Jane', 'Rock', 50),
+('Loosing my religion', 'R.E.M song', 'Andrii', 'Rock', 25),
+('Window functions', 'Window functions', 'Bob', 'sql', 12),
+('Stupid stuff', 'no body', 'Bob', 'Other', 40),
+('SELECT clause', 'SELECT clause body', 'Jane', 'sql', 1),
+('Church chants', 'Church chants body', 'Jane', 'Chants', 25),
+('loops in php', 'loops in php', 'Bob', 'php', 45),
+('if condition in php', 'php if', 'Andrii', 'php', 522),
+('loops in php, part 2', 'loops in php, part 2', 'Jane', 'php', 59)
