@@ -1,5 +1,7 @@
 https://dev.mysql.com/doc/refman/8.0/en/window-functions-usage.html
+
 https://andreyex.ru/bazy-dannyx/
+
 https://www.youtube.com/watch?v=3xAIWiTJCvE&ab_channel=TheOrganicChemistryTutor
 
 # Window Functions Cheatsheet
