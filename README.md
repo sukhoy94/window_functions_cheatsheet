@@ -46,6 +46,32 @@ Window functions are permitted only in the select list and ORDER BY clause. Quer
 
 # SQL's
 
+--- Aggregate functions example ---
+
+```
+SELECT 
+       SUM(views) as sum 
+FROM 
+     posts
+```
+
+```
+SELECT
+    AVG(views) as sum
+FROM
+    posts
+```
+
+```
+SELECT
+    SUM(views) as sum_by_author
+FROM
+    posts
+GROUP BY author
+```
+
+--- Window functions example ---
+
 - cume_dist()
 
 ```
