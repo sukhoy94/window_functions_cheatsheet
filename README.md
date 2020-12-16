@@ -18,16 +18,6 @@ A window function performs an aggregate-like operation on a set of query rows. H
 - The query rows related to the current row over which function evaluation occurs comprise the window for the current row.
 
 
-
-
-aggregate example: 
-
-```
-SELECT SUM(views) FROM posts
-SELECT SUM(views), author FROM posts GROUP BY author
-```
-
-
 A window function performs an aggregate-like operation on a set of query rows. However, whereas an aggregate operation groups query rows into a single result row, a window function produces a result for each query row.
 ```
 SELECT id, author, title, body, category, views, SUM(views) OVER() as total_views FROM posts;
@@ -50,7 +40,7 @@ Window functions are permitted only in the select list and ORDER BY clause. Quer
 
 ```
 SELECT 
-       SUM(views) as sum 
+    SUM(views) as sum 
 FROM 
      posts
 ```
