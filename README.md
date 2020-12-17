@@ -1,5 +1,9 @@
 https://dev.mysql.com/doc/refman/8.0/en/window-functions-usage.html
 
+https://andreyex.ru/bazy-dannyx/
+
+https://www.youtube.com/watch?v=3xAIWiTJCvE&ab_channel=TheOrganicChemistryTutor - cumulative distribution explanation
+
 # Window Functions Cheatsheet
 
 A window function is an SQL function where the input values are taken from a "window" of one or more rows in the results set of a SELECT statement.
@@ -12,16 +16,6 @@ A window function performs an aggregate-like operation on a set of query rows. H
 - The row for which function evaluation occurs is called the current row.
 
 - The query rows related to the current row over which function evaluation occurs comprise the window for the current row.
-
-
-
-
-aggregate example: 
-
-```
-SELECT SUM(views) FROM posts
-SELECT SUM(views), author FROM posts GROUP BY author
-```
 
 
 A window function performs an aggregate-like operation on a set of query rows. However, whereas an aggregate operation groups query rows into a single result row, a window function produces a result for each query row.
@@ -41,6 +35,32 @@ Window functions are permitted only in the select list and ORDER BY clause. Quer
 
 
 # SQL's
+
+--- Aggregate functions example ---
+
+```
+SELECT 
+    SUM(views) as sum 
+FROM 
+     posts
+```
+
+```
+SELECT
+    AVG(views) as sum
+FROM
+    posts
+```
+
+```
+SELECT
+    SUM(views) as sum_by_author
+FROM
+    posts
+GROUP BY author
+```
+
+--- Window functions example ---
 
 - cume_dist()
 
@@ -175,3 +195,68 @@ FROM
 ORDER BY category, id
 ```
 
+- nth_value()
+
+```
+SELECT
+    id,
+    author,
+    title,
+    body,
+    category,
+    views,
+    NTH_VALUE(views, 1) OVER (
+        PARTITION BY category ORDER BY id
+        ) as views_second_in_frame
+FROM
+    posts
+ORDER BY category, id
+```
+
+- ntile()
+
+```
+SELECT
+   id,
+   author,
+   title,
+   body,
+   category,
+   views,
+   NTILE(2) OVER (
+       ORDER BY id
+       ) as ntile_views
+FROM
+   posts
+ORDER BY category, id
+```
+
+- percent_rank()
+
+```
+SELECT
+    id,
+    author,
+    title,
+    body,
+    category,
+    views,
+    PERCENT_RANK() OVER (ORDER BY views) AS 'percent_rank'
+FROM
+    posts
+```
+
+- row_number()
+
+```
+SELECT
+    id,
+    author,
+    title,
+    body,
+    category,
+    views,
+    ROW_NUMBER() OVER (PARTITION BY category ORDER BY id DESC) AS 'row_number'
+FROM
+    posts
+```
